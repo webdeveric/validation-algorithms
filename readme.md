@@ -21,3 +21,5 @@ if (luhn('4000000000001000')) {
 ## Benchmarks
 
 Run `pnpm bench` to run the benchmarks.
+
+![image](https://github.com/user-attachments/assets/d53187d3-2117-47fa-9d08-ad7978e8c2e4)
