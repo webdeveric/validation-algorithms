@@ -1,15 +1,11 @@
 {
   "name": "validation-algorithms",
-  "description": "",
+  "description": "Validation algorithms",
   "version": "0.0.0",
   "keywords": [
     "luhn"
   ],
   "author": "Eric King <eric@webdeveric.com> (https://webdeveric.com/)",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/webdeveric/validation-algorithms.git"
