@@ -1,13 +1,23 @@
-# `dual-ts-package-template`
+# `validation-algorithms`
 
-[![Node.js CI](https://github.com/webdeveric/dual-ts-package-template/actions/workflows/node.js.yml/badge.svg)](https://github.com/webdeveric/dual-ts-package-template/actions/workflows/node.js.yml)
+[![Node.js CI](https://github.com/webdeveric/validation-algorithms/actions/workflows/node.js.yml/badge.svg)](https://github.com/webdeveric/validation-algorithms/actions/workflows/node.js.yml) [![Release](https://github.com/webdeveric/validation-algorithms/actions/workflows/release.yml/badge.svg)](https://github.com/webdeveric/validation-algorithms/actions/workflows/release.yml)
+
+## Install
+
+`pnpm add validation-algorithms`
+
+`npm i validation-algorithms --saves`
 
 ## Usage
 
-Click the "Use this template" button on this page and select "Create a new repository."
+```ts
+import { luhn } from 'validation-algorithms/luhn';
 
-### GitHub CLI
+if (luhn('4000000000001000')) {
+  // passed validation
+}
+```
 
-Reference: https://cli.github.com/manual/gh_repo_create
+## Benchmarks
 
-`gh repo create [YOUR-REPO-NAME] --template webdeveric/dual-ts-package-template --private`
+Run `pnpm bench` to run the benchmarks.
