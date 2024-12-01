@@ -6,9 +6,13 @@
 
 `pnpm add validation-algorithms`
 
-`npm i validation-algorithms --saves`
+`npm install validation-algorithms --save`
 
-## Usage
+`yarn add validation-algorithms`
+
+## Algorithms
+
+### [Luhn](https://en.wikipedia.org/wiki/Luhn_algorithm)
 
 ```ts
 import { luhn } from 'validation-algorithms/luhn';
