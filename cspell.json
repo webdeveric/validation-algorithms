@@ -5,6 +5,7 @@
     "CODEOWNERS",
     "commitlint",
     "conventionalcommits",
+    "luhn",
     "nvmrc",
     "postbuild",
     "tsbuildinfo",

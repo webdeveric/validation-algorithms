@@ -1,22 +1,20 @@
 {
-  "name": "@webdeveric/dual-ts-package-template",
-  "description": "",
+  "name": "validation-algorithms",
+  "description": "Validation algorithms",
   "version": "0.0.0",
-  "keywords": [],
+  "keywords": [
+    "luhn"
+  ],
   "author": "Eric King <eric@webdeveric.com> (https://webdeveric.com/)",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webdeveric/dual-ts-package-template.git"
+    "url": "git+ssh://git@github.com/webdeveric/validation-algorithms.git"
   },
   "bugs": {
-    "url": "https://github.com/webdeveric/dual-ts-package-template/issues"
+    "url": "https://github.com/webdeveric/validation-algorithms/issues"
   },
   "license": "MIT",
-  "packageManager": "pnpm@9.14.3+sha512.c0f53ee99477ed969b82b289ad011a5d16bf1623c957e7f29eabe8d0c00b574c29b8c7f54f6c67ee710c73f285c8154d07ce44b46fe2c0eeb476a90441bac371",
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab",
   "sideEffects": false,
   "engines": {
     "node": ">=20.0.0"
@@ -47,13 +45,15 @@
     "validate": "validate-package-exports --check --verify --info",
     "postbuild": "echo '{\"type\":\"commonjs\"}' > ./dist/cjs/package.json && echo '{\"type\":\"module\"}' > ./dist/mjs/package.json && pnpm validate",
     "typecheck": "tsc --build --verbose",
-    "lint": "eslint ./*.{js,cjs,mjs,ts,cts,mts} ./src/ ./test/ --ext .ts,.mjs,.cjs",
+    "lint": "eslint ./*.{js,cjs,mjs,ts,cts,mts} ./src/ ./bench/ ./test/ --ext .ts,.mjs,.cjs",
+    "bench": "vitest bench",
     "test": "vitest",
-    "coverage": "vitest --coverage",
+    "coverage": "vitest run --coverage",
     "spellcheck": "cspell './{.github,src,test}/**/*.{ts,json}' './*.{js,json,md,mjs,mts}' './package.json' --no-progress",
     "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm coverage && pnpm build",
-    "format": "prettier --write ./*.{js,json,md,mjs,mts} ./src/ ./test/",
-    "prepare": "husky"
+    "format": "prettier --write ./*.{js,json,md,mjs,mts} ./src/ ./bench/ ./test/",
+    "prepare": "husky",
+    "dry-release": "semantic-release --dry-run"
   },
   "prettier": "@webdeveric/prettier-config",
   "devDependencies": {
@@ -71,8 +71,10 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
+    "fast-luhn": "^2.0.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
+    "luhn": "^2.4.1",
     "prettier": "^3.4.1",
     "rimraf": "^6.0.1",
     "semantic-release": "^24.2.0",

@@ -1,3 +1,1 @@
-export function demo(): boolean {
-  return true;
-}
+export * from './luhn.js';
