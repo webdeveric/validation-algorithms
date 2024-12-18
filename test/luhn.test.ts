@@ -18,8 +18,8 @@ describe('luhn()', () => {
     expect(luhn(4000000000001001)).toBeFalsy();
   });
 
-  it.each(['not a credit card number', '-1', Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY])(
-    'returns false when giving bad input: %s',
+  it.each(['', ' ', 'not a credit card number', '-1', Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY])(
+    'returns false when giving bad input: "%s"',
     (input) => {
       expect(luhn(input)).toBeFalsy();
     },
