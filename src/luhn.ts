@@ -1,8 +1,8 @@
 export function luhn(input: number | bigint | string): boolean {
   const value = typeof input === 'string' ? input : String(input);
 
-  // input contained non digit characters.
-  if (/[^\d]/.test(value)) {
+  // value is empty or contained non digit characters.
+  if (!value.length || /\D/.test(value)) {
     return false;
   }
 
