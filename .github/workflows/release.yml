@@ -5,13 +5,16 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read # for checkout
+concurrency: release
+
+env:
+  HUSKY: 0
 
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    environment: release
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
@@ -29,20 +32,20 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
 
       - name: Installing dependencies
         run: pnpm install --frozen-lockfile
 
-      # https://github.com/pnpm/pnpm/issues/7909
-      # - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-      #   run: npm audit signatures
+      - name: Audit dependencies
+        run: pnpm audit --audit-level=moderate --prod
+
+      - name: Verify registry signatures for installed packages
+        run: pnpm audit signatures
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Set this value in your repository secrets after you generate it at NPM.
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
-        run: npx --no semantic-release
+        run: pnpm exec semantic-release
