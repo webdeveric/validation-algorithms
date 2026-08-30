@@ -3,6 +3,7 @@ import { validate as luhnValidate } from 'luhn';
 import { bench } from 'vitest';
 
 import { luhn } from '../src/luhn.js';
+import { safeLuhn } from '../src/safeLuhn.js';
 
 const iterations = 1000;
 
@@ -10,6 +11,16 @@ bench(
   'luhn()',
   () => {
     luhn('bad input');
+  },
+  {
+    iterations,
+  },
+);
+
+bench(
+  'safeLuhn()',
+  () => {
+    safeLuhn('bad input');
   },
   {
     iterations,
