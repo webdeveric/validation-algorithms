@@ -8,7 +8,6 @@ export default defineConfig({
     },
     include: ['./test/**/*.test.ts'],
     coverage: {
-      all: false,
       provider: 'v8',
     },
   },
