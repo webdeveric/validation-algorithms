@@ -54,7 +54,7 @@
     "coverage": "vitest run --coverage",
     "spellcheck": "cspell './{.github,src,test}/**/*.{ts,json}' './*.{js,json,md,mjs,mts}' './package.json' --no-progress",
     "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm coverage && pnpm build",
-    "format": "prettier --write ./*.{js,json,md,mjs,mts} ./src/ ./bench/ ./test/",
+    "format": "prettier --write .",
     "prepare": "husky",
     "dry-release": "semantic-release --dry-run"
   },
